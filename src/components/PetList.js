@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PetList = (props) => {
   const petList = props.pets.map((pet, i) => {
-    return <div key={i}><PetCard {...pet} onSelectPet={props.onSelectPet} onRemovePet={props.onRemovePet} /></div>
+    return <div key={i}><PetCard {...pet} index={i} onSelectPet={props.onSelectPet} onRemovePet={props.onRemovePet} /></div>
   });
 
 

@@ -20,28 +20,24 @@ class App extends Component {
     };
   }
 
-  onSelectPet = (petID) => {
-    const index = petID - 1
+  onSelectPet = (index) => {
     this.setState({
       currentPet: this.state.petList[index],
     });
   }
 
-  onRemovePet = (petID) => {
-    const index = petID - 1
-    
-    if (this.state.currentPet.id === petID) {
+  onRemovePet = (index) => {
+    if ((this.state.currentPet !== undefined) && (this.state.currentPet === this.state.petList[index])) {
       this.setState({
         currentPet: undefined,
       });
     }
 
-    const updatedList = this.state.petList.splice(index, 1)
+    this.state.petList.splice(index, 1)
 
     this.setState({
       petList: this.state.petList,
     });
-    // console.log(this.state.petList)
   }
 
   render() {

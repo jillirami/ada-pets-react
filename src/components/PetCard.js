@@ -11,11 +11,11 @@ const PetCard = (props) => {
   const { id, name, species, about, location } = props;
 
   const selectPet = () => {
-    props.onSelectPet(props.id)
+    props.onSelectPet(props.index)
   }
 
   const removePet = () => {
-    props.onRemovePet(props.id)
+    props.onRemovePet(props.index)
   }
 
 
