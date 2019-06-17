@@ -20,10 +20,28 @@ class App extends Component {
     };
   }
 
-  onSelectPet = (index) => {
+  onSelectPet = (petID) => {
+    const index = petID - 1
     this.setState({
       currentPet: this.state.petList[index],
     });
+  }
+
+  onRemovePet = (petID) => {
+    const index = petID - 1
+    
+    if (this.state.currentPet.id === petID) {
+      this.setState({
+        currentPet: undefined,
+      });
+    }
+
+    const updatedList = this.state.petList.splice(index, 1)
+
+    this.setState({
+      petList: this.state.petList,
+    });
+    // console.log(this.state.petList)
   }
 
   render() {
@@ -42,7 +60,7 @@ class App extends Component {
           {currentPet !== undefined ? < PetDetails currentPet={currentPet} /> : '' }
         <section className="pet-list-wrapper">
           { /* Wave 1:  Where PetList should appear */ }
-          <PetList pets={this.state.petList} onSelectPet={this.onSelectPet}/>
+          <PetList pets={this.state.petList} onSelectPet={this.onSelectPet} onRemovePet={this.onRemovePet}/>
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */ }

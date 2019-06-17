@@ -11,7 +11,11 @@ const PetCard = (props) => {
   const { id, name, species, about, location } = props;
 
   const selectPet = () => {
-    props.onSelectPet(props.id - 1)
+    props.onSelectPet(props.id)
+  }
+
+  const removePet = () => {
+    props.onRemovePet(props.id)
   }
 
 
@@ -30,8 +34,8 @@ const PetCard = (props) => {
           type="button" 
           className="btn btn-danger pet-card--close-btn" 
           aria-label="Close"
-        >
-          Close
+        onClick={removePet}>
+          Remove
         </button>
       </section>
       <section className="pet-card--body">
