@@ -20,8 +20,11 @@ class App extends Component {
     };
   }
 
-
-
+  onSelectPet = (index) => {
+    this.setState({
+      currentPet: this.state.petList[index],
+    });
+  }
 
   render() {
     const { currentPet } = this.state;
@@ -36,8 +39,10 @@ class App extends Component {
           <SearchBar />
         </section>
           { /* Wave 2:  Where Pet Details should appear */ }
+          {currentPet !== undefined ? < PetDetails currentPet={currentPet} /> : '' }
         <section className="pet-list-wrapper">
           { /* Wave 1:  Where PetList should appear */ }
+          <PetList pets={this.state.petList} onSelectPet={this.onSelectPet}/>
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */ }
